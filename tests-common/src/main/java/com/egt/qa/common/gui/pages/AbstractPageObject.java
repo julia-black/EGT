@@ -19,28 +19,26 @@ import org.openqa.selenium.support.PageFactory;
 public abstract class AbstractPageObject {
     protected final WebdriverHelper webdriverHelper = new WebdriverHelper();
     private final Logger log = LogManager.getLogger(this.getClass());
-    @FindBy(xpath = ".//td[@class='submenu_inactive']//a[text()=' Rates Management']")
-    protected WebElement btnRatesManagement;
-    @FindBy(xpath = ".//*[@class='info-nick']")
-    private WebElement btnNickname;
-    @FindBy(xpath = ".//*[@class='help2']")
-    private WebElement btnLogout;
 
     //<editor-folder desc="WebElements">
-    @FindBy(xpath = "//*[@class='catalog-path s-width']/a[3]")
+
+    @FindBy(xpath = ".//span[@class='ng-binding ng-scope']")
+    private WebElement btnNickname;
+    @FindBy(xpath = ".//*[contains(@class,'logout')]")
+    private WebElement btnLogout;
+    @FindBy(xpath = ".//*[@id=\"page-wrap\"]//div[@class='epgu-breadcrumbs content-center-box']/ul/li[2]")
     private WebElement lblActiveMenu;
-    @FindBy(xpath = "//*[@class='catalog-path s-width']/a[4]")
+    @FindBy(xpath = ".//*[@id=\"page-wrap\"]//div[@class='epgu-breadcrumbs content-center-box']/ul/li[3]")
     private WebElement lblActiveSubMenu;
+
+    //</editor-folder>
 
     protected AbstractPageObject() {
         PageFactory.initElements(BaseSelenium.getSeleniumDriver(), this);
     }
 
     protected abstract String getPAGE_URL();
-
     protected abstract String getPAGE_NAME();
-
-    //</editor-folder>
 
     public abstract void isOpen();
 
@@ -105,8 +103,8 @@ public abstract class AbstractPageObject {
         isOpen(login, btnNickname);
     }
 
-    public boolean isLoginWithoutAssert(String login) {
-        return isExists(btnNickname, login);
+    public boolean isLoginWithoutAssert() {
+        return isExists(btnNickname, "ФИО пользователя");
     }
 
     /**
@@ -114,7 +112,8 @@ public abstract class AbstractPageObject {
      */
     public void logOut() {
         log.info("Logging out from " + getPAGE_NAME());
-        click(btnLogout, "'Logout' button");
+        click(btnNickname, "кнопка 'ФИО пользователя'");
+        click(btnLogout, "кнопка ");
     }
 
     //</editor-folder>

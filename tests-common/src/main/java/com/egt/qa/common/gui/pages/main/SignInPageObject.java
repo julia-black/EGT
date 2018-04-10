@@ -1,20 +1,20 @@
 package com.egt.qa.common.gui.pages.main;
 
 import com.egt.qa.common.gui.pages.AbstractPageObject;
-
+import com.egt.qa.common.gui.webdriver.BaseSelenium;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
-public class MainPageObject extends AbstractPageObject {
+public class SignInPageObject extends AbstractPageObject {
     private final Logger log = LogManager.getLogger(this.getClass());
 
     //<editor-folder desc="WebElements">
 
-    @FindBy(xpath = ".//*[@id='content']//h3[contains(@class,'popular-title')]")
-    private WebElement lblTitlePopular;
+    @FindBy(xpath = ".//h1[@class='base-title b-page-title']")
+    private WebElement lblTitleEnter;
     @FindBy(xpath = ".//*[@class='button-base button-long button-base--enter']")
     private WebElement btnLogin;
     @FindBy(xpath = ".//*[@class='another-user']")
@@ -36,11 +36,11 @@ public class MainPageObject extends AbstractPageObject {
 
     //</editor-folder>
 
-    private final String PAGE_NAME = "'Главная страница'";
+    private final String PAGE_NAME = "'Авторизация'";
 
     @Override
     protected String getPAGE_URL() {
-        return "";
+        return "https://esia.gosuslugi.ru/idp/login/pwd/switch?cc=bp";
     }
     @Override
     protected String getPAGE_NAME() {
@@ -52,13 +52,12 @@ public class MainPageObject extends AbstractPageObject {
      */
     public void isOpen() {
         log.info("Is page opened " + getPAGE_NAME());
-        //isOpen("Популярное на портале", lblTitlePopular);
-        isOpen("Войти", btnLogin);
+        webdriverHelper.isOpen("Вход", lblTitleEnter);
     }
 
     public void open() {
         log.info("Открывается страница " + getPAGE_NAME());
-        webdriverHelper.open(getPAGE_URL());
+        webdriverHelper.openDirectLink(getPAGE_URL());
     }
 
     public void signingIn(String login, String password, String loginType) {

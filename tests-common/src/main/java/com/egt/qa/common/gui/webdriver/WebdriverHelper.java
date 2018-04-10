@@ -1,5 +1,6 @@
 package com.egt.qa.common.gui.webdriver;
 
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
@@ -53,6 +54,10 @@ public class WebdriverHelper {
         BaseSelenium.getSeleniumDriver().get(siteUrl + PAGE_URL);
     }
 
+    public void openDirectLink(String address) {
+        BaseSelenium.getSeleniumDriver().get(address);
+    }
+
     /**
      * Checking the existing of the web-page element by path (e.g. xPath, css)
      *
@@ -104,6 +109,12 @@ public class WebdriverHelper {
      */
     public void isOpen(String PAGE_URL, String expectedText, WebElement checkingElement) {
         Assert.assertEquals(BaseSelenium.getSeleniumDriver().getCurrentUrl(), siteUrl + PAGE_URL);
+        log.warn(BaseSelenium.getSeleniumDriver().getCurrentUrl());
+        Assert.assertTrue(isExists(checkingElement));
+        Assert.assertEquals(checkingElement.getText(), expectedText);
+    }
+
+    public void isOpen(String expectedText, WebElement checkingElement) {
         log.warn(BaseSelenium.getSeleniumDriver().getCurrentUrl());
         Assert.assertTrue(isExists(checkingElement));
         Assert.assertEquals(checkingElement.getText(), expectedText);
