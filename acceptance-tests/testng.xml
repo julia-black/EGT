@@ -6,14 +6,19 @@
             <class name="com.egt.qa.common.gui.tests.main.MainTest"/>
         </classes>
     </test>
-    <test name="ActionCamerasTest">
+    <test name="CabinetPage">
         <classes>
-            <class name="ActionCamerasTest"/>
+            <class name="com.egt.qa.common.gui.tests.cabinet.CabinetTest"/>
         </classes>
     </test>
-    <test name="TabletsTest">
+    <test name="SupportPage">
         <classes>
-            <class name="TabletsTest"/>
+            <class name="com.egt.qa.common.gui.tests.support.SupportTest"/>
+        </classes>
+    </test>
+    <test name="ServicesPage">
+        <classes>
+            <class name="com.egt.qa.common.gui.tests.services.ServicesTest"/>
         </classes>
     </test>
 </suite>
