@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="EGT">
+
+    <test name="MainPage">
+        <classes>
+            <class name="com.egt.qa.common.gui.tests.main.MainTest"/>
+        </classes>
+    </test>
+    <test name="ActionCamerasTest">
+        <classes>
+            <class name="ActionCamerasTest"/>
+        </classes>
+    </test>
+    <test name="TabletsTest">
+        <classes>
+            <class name="TabletsTest"/>
+        </classes>
+    </test>
+</suite>
