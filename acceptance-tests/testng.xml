@@ -1,13 +1,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="EGT">
 
-    <test name="MainPage">
+    <!--<test name="MainPage">
         <classes>
-            <!--<class name="com.egt.qa.common.gui.tests.main.SigningInTest"/>-->
+            <class name="com.egt.qa.common.gui.tests.main.SigningInTest"/>
             <class name="com.egt.qa.common.gui.tests.main.MainTest"/>
         </classes>
     </test>
-    <!--<test name="CabinetPage">
+    <test name="CabinetPage">
         <classes>
             <class name="com.egt.qa.common.gui.tests.cabinet.CabinetTest"/>
         </classes>
@@ -16,10 +16,10 @@
         <classes>
             <class name="com.egt.qa.common.gui.tests.support.SupportTest"/>
         </classes>
-    </test>
+    </test>-->
     <test name="ServicesPage">
         <classes>
             <class name="com.egt.qa.common.gui.tests.services.ServicesTest"/>
         </classes>
-    </test>-->
+    </test>
 </suite>

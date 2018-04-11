@@ -1,11 +1,20 @@
 package com.egt.qa.common.gui.tests.main;
 
 import com.egt.qa.common.gui.annotations.TestCaseID;
+import com.egt.qa.common.gui.pages.main.MainPageObject;
 import com.egt.qa.common.gui.tests.AbstractTest;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class SigningInTest extends AbstractTest {
+    @BeforeClass
+    public static void login() {
+        MainPageObject mainPage = new MainPageObject();
+        loggingIn();
+    }
+
     @BeforeMethod
     public void preparation() throws InterruptedException {
         logout();
@@ -31,5 +40,17 @@ public class SigningInTest extends AbstractTest {
         loggingIn("СНИЛС", true);
         logout();
         loggingIn("СНИЛС", false);
+    }
+
+    @AfterClass
+    public static void logout() throws InterruptedException {
+        MainPageObject mainPage = new MainPageObject();
+        if (mainPage.isLoginWithoutAssert()) {
+            mainPage.logOut();
+        }
+        Thread.sleep(10000);
+        mainPage.open();
+        mainPage.isOpen();
+        mainPage.IsLoggedOut();
     }
 }

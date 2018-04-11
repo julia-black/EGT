@@ -1,6 +1,8 @@
 package com.egt.qa.common.gui.tests.services;
 
 import com.egt.qa.common.gui.annotations.TestCaseID;
+import com.egt.qa.common.gui.pages.services.EducationLevelsPageObject;
+import com.egt.qa.common.gui.pages.services.EducationPageObject;
 import com.egt.qa.common.gui.tests.AbstractTest;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -18,9 +20,13 @@ public class ServicesTest extends AbstractTest {
     @Test(description = "Открытие описания уровней высшего образования", dataProvider = "forEducation")
     @TestCaseID("401")
     public void openEducationLevels(String[] edDescription) {
-        if (edDescription[0].equals("Бакалавриат")) {
-            Assert.assertEquals("Это законченное высшее образование. Поступать на программы бакалавриата могут обладатели среднего общего или среднего профессиональногог образования. Учеба длится 4 года и предполагает общую фундаментальную подготовку. Для поступления в вуз необходимо написать заявление в приёмную комиссию учебного заведения и представить паспорт и аттестат или диплом об окончании школы или техникума, результаты ЕГЭ. По окончании бакалавриата студенты защищают квалификационную выпускную работу. По ее итогам выдается диплом бакалавра с присвоением квалификации («Академический бакалавр», «Прикладной бакалавр»). Документ дает право работать по профессии или продолжить обучение в магистратуре.", edDescription[1]);
-        }
-        Assert.assertEquals(edDescription[1], edDescription[1]);
+        EducationPageObject educationPage = new EducationPageObject();
+        EducationLevelsPageObject educationLevelsPage = new EducationLevelsPageObject();
+        educationPage.open();
+        educationPage.isOpen();
+        educationPage.openEducationLevelDescription(edDescription[0]);
+        educationLevelsPage.open();
+        educationLevelsPage.isOpen();
+        educationLevelsPage.checkEducationLevelDescription(edDescription[0], edDescription[1]);
     }
 }
