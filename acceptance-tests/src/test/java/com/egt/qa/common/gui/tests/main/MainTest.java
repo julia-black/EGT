@@ -7,10 +7,16 @@ import com.egt.qa.common.gui.pages.services.FinishAppointmentToDoctor;
 import com.egt.qa.common.gui.tests.AbstractTest;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class MainTest extends AbstractTest {
+    @BeforeClass
+    public static void login() {
+        loggingIn();
+    }
+
     @Test(description = "Запись пользователя ко врачу", priority = 1)
     @TestCaseID("105")
     public void makeAppointmentToDoctor() {
@@ -18,6 +24,8 @@ public class MainTest extends AbstractTest {
         BeginAppointmentToDoctor beginAppointmentToDoctor = new BeginAppointmentToDoctor();
         FinishAppointmentToDoctor finishAppointmentToDoctor = new FinishAppointmentToDoctor();
 
+        mainPage.open();
+        mainPage.isOpen();
         mainPage.pressMakeAppointmentButton();
         beginAppointmentToDoctor.isOpen();
         beginAppointmentToDoctor.writeRequest();

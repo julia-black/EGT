@@ -39,7 +39,7 @@ public class SupportTest extends AbstractTest {
         supportPage.isOpen();
         supportPage.writeQuestion(searchText);
         supportPage.searchWithHint();
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         searchResultPage.isOpen();
         searchResultPage.checkFirstResult(searchText);
         if (searchText.equals("Как получить скидку 30% на оплату госпошлины")) {
