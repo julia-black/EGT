@@ -1,8 +1,8 @@
 package com.egt.qa.common.gui.webdriver;
 
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -43,7 +43,7 @@ public class WebdriverHelper {
         assert js != null;
         return Boolean.parseBoolean(js.executeScript(JS_AJAX_PROGRESS).toString());
     };
-    private final Logger log = LogManager.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     /**
      * Open page with the specific <b>PAGE_URL</b>
@@ -110,12 +110,16 @@ public class WebdriverHelper {
     public void isOpen(String PAGE_URL, String expectedText, WebElement checkingElement) {
         Assert.assertEquals(BaseSelenium.getSeleniumDriver().getCurrentUrl(), siteUrl + PAGE_URL);
         log.warn(BaseSelenium.getSeleniumDriver().getCurrentUrl());
+        waitForPageUpdated();
+        waitForElementToBeClickable(checkingElement);
         Assert.assertTrue(isExists(checkingElement));
         Assert.assertEquals(checkingElement.getText(), expectedText);
     }
 
     public void isOpen(String expectedText, WebElement checkingElement) {
         log.warn(BaseSelenium.getSeleniumDriver().getCurrentUrl());
+        waitForPageUpdated();
+        waitForElementToBeClickable(checkingElement);
         Assert.assertTrue(isExists(checkingElement));
         Assert.assertEquals(checkingElement.getText(), expectedText);
     }

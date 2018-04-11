@@ -2,14 +2,14 @@ package com.egt.qa.common.gui.pages.main;
 
 import com.egt.qa.common.gui.pages.AbstractPageObject;
 import com.egt.qa.common.gui.webdriver.BaseSelenium;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
 public class SignInPageObject extends AbstractPageObject {
-    private final Logger log = LogManager.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     //<editor-folder desc="WebElements">
 
@@ -36,36 +36,36 @@ public class SignInPageObject extends AbstractPageObject {
 
     //</editor-folder>
 
-    private final String PAGE_NAME = "'Авторизация'";
-
     @Override
     protected String getPAGE_URL() {
         return "https://esia.gosuslugi.ru/idp/login/pwd/switch?cc=bp";
     }
     @Override
     protected String getPAGE_NAME() {
-        return PAGE_NAME;
+        return "'Авторизация'";
     }
 
     /**
-     * Check that Main page is opened.
+     * Check that Sign In page is opened.
      */
     public void isOpen() {
         log.info("Is page opened " + getPAGE_NAME());
-        webdriverHelper.isOpen("Вход", lblTitleEnter);
+        isOpen("Популярное на портале", lblTitleEnter);
+        //isOpen("Войти", btnLogin);
     }
 
     public void open() {
         log.info("Открывается страница " + getPAGE_NAME());
-        webdriverHelper.openDirectLink(getPAGE_URL());
+        webdriverHelper.open(getPAGE_URL());
     }
 
     public void signingIn(String login, String password, String loginType) {
         click(btnLogin, "кнопка 'Войти'");
         click(lblAnotherUser, "текст 'Другой пользователь'");
-        if (loginType.equals("СНИЛС") || loginType.equals("SNILS"))
+        if (loginType.equals("СНИЛС"))
         {
             click(tabSnils, "вкладка 'СНИЛС'");
+            click(inputSnils, "поле ввода 'СНИЛС'");
             sendKeys(inputSnils, login, "'СНИЛС'");
         } else {
             click(tabMobile, "вкладка 'Телефон или почта'");

@@ -2,8 +2,8 @@ package com.egt.qa.common.gui.pages;
 
 import com.egt.qa.common.gui.webdriver.BaseSelenium;
 import com.egt.qa.common.gui.webdriver.WebdriverHelper;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -18,7 +18,7 @@ import org.openqa.selenium.support.PageFactory;
  */
 public abstract class AbstractPageObject {
     protected final WebdriverHelper webdriverHelper = new WebdriverHelper();
-    private final Logger log = LogManager.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     //<editor-folder desc="WebElements">
 

@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class SigningInTest extends AbstractTest {
     @BeforeMethod
-    public void preparation() {
+    public void preparation() throws InterruptedException {
         logout();
     }
 
@@ -17,17 +17,17 @@ public class SigningInTest extends AbstractTest {
         loggingIn("СНИЛС", true);
     }
 
-    @Test(description = "Авторизация с запомненным мобильным номером")
+    @Test(description = "Авторизация с запомненным мобильным номером", priority=2)
     @TestCaseID("103")
-    public void checkLoginMobileSaved() {
+    public void checkLoginMobileSaved() throws InterruptedException {
         loggingIn("Мобильный", true);
         logout();
         loggingIn("Мобильный", false);
     }
 
-    @Test(description = "Авторизация с запомненным СНИЛС")
+    @Test(description = "Авторизация с запомненным СНИЛС", priority=3)
     @TestCaseID("104")
-    public void checkLoginSNILSSaved() {
+    public void checkLoginSNILSSaved() throws InterruptedException {
         loggingIn("СНИЛС", true);
         logout();
         loggingIn("СНИЛС", false);

@@ -1,8 +1,12 @@
 package com.egt.qa.common.gui;
 
 import com.egt.qa.common.gui.annotations.TestCaseID;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.egt.qa.common.gui.webdriver.BaseSelenium;
+import io.qameta.allure.Attachment;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -10,7 +14,7 @@ import org.testng.ITestResult;
 import java.lang.reflect.Method;
 
 public class ScreenListener implements ITestListener {
-    private final Logger log = LogManager.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     /**
      * Mentioning in log about the beggining of the new test with unique testCaseID
@@ -33,18 +37,18 @@ public class ScreenListener implements ITestListener {
     public void onTestSuccess(ITestResult iTestResult) {
     }
 
-    /*@Attachment(value = "Page screenshot", type = "image/png")
+    @Attachment(value = "Page screenshot", type = "image/png")
     private byte[] makeScreenshot() {
         return ((TakesScreenshot) BaseSelenium.getSeleniumDriver()).getScreenshotAs(OutputType.BYTES);
-    }*/
+    }
 
     @Override
     public void onTestFailure(ITestResult result) {
-        /*makeScreenshot();
+        makeScreenshot();
         log.info("Test FAILED: " + result.getName());
         if (result.getThrowable() != null) {
             result.getThrowable().printStackTrace();
-        }*/
+        }
     }
 
     @Override

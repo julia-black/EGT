@@ -17,7 +17,8 @@ public class BaseSelenium {
     }
 
     public static void init() {
-        ChromeDriverManager.getInstance().setup();
+        System.setProperty("webdriver.chrome.driver", "C:\\Tools\\chromedriver.exe");
+        //ChromeDriverManager.getInstance().setup(); Это отключает log4j логгер
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
