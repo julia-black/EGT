@@ -33,6 +33,16 @@ public class MainPageObject extends AbstractPageObject {
     private WebElement inputPassword;
     @FindBy(xpath = ".//*[@data-bind='click: loginByPwd']")
     private WebElement btnEnter;
+    @FindBy(xpath = ".//span[contains(., 'Запись  на')]")
+    private WebElement btnAppointmentToDoctor;
+    @FindBy(xpath = ".//*[contains(@class, 'civi-picker__title')]")
+    private WebElement btnSelectLanguage;
+    @FindBy(xpath = ".//*[contains(@class, 'lang-picker-lang-rus')]")
+    private WebElement btnSelectLanguageRUS;
+    @FindBy(xpath = ".//*[contains(@class, 'lang-picker-lang-gbr')]")
+    private WebElement btnSelectLanguageGBR;
+    @FindBy(xpath = ".//*[@class='location-button__label-text']")
+    private WebElement lblLocation;
 
     //</editor-folder>
 
@@ -86,5 +96,21 @@ public class MainPageObject extends AbstractPageObject {
 
     public void IsLoggedOut() {
         Assert.assertFalse(isLoginWithoutAssert());
+    }
+
+    public void pressMakeAppointmentButton() {
+        click(btnAppointmentToDoctor, "кнопка 'Записаться на прием к врачу'");
+    }
+
+    public void setLanguage(String language) {
+        click(btnSelectLanguage, "кнопка выбора языка");
+        if (language.equals("GBR"))
+        {
+            click(btnSelectLanguageGBR, "кнопка 'Великобритания'");
+        }
+    }
+
+    public void checkLocation(String location) {
+        Assert.assertEquals(lblLocation.getText(), location);
     }
 }

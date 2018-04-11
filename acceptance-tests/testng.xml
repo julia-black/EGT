@@ -3,8 +3,8 @@
 
     <test name="MainPage">
         <classes>
-            <class name="com.egt.qa.common.gui.tests.main.SigningInTest"/>
-            <!--<class name="com.egt.qa.common.gui.tests.main.MainTest"/>-->
+            <!--<class name="com.egt.qa.common.gui.tests.main.SigningInTest"/>-->
+            <class name="com.egt.qa.common.gui.tests.main.MainTest"/>
         </classes>
     </test>
     <!--<test name="CabinetPage">

@@ -2,21 +2,40 @@ package com.egt.qa.common.gui.tests.main;
 
 import com.egt.qa.common.gui.annotations.TestCaseID;
 import com.egt.qa.common.gui.pages.main.MainPageObject;
+import com.egt.qa.common.gui.pages.services.BeginAppointmentToDoctor;
+import com.egt.qa.common.gui.pages.services.FinishAppointmentToDoctor;
 import com.egt.qa.common.gui.tests.AbstractTest;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class MainTest extends AbstractTest {
-    @Test(description = "Запись пользователя ко врачу")
+    @Test(description = "Запись пользователя ко врачу", priority = 1)
     @TestCaseID("105")
     public void makeAppointmentToDoctor() {
-        Assert.assertEquals("***REMOVED***", "***REMOVED***");
+        MainPageObject mainPage = new MainPageObject();
+        BeginAppointmentToDoctor beginAppointmentToDoctor = new BeginAppointmentToDoctor();
+        FinishAppointmentToDoctor finishAppointmentToDoctor = new FinishAppointmentToDoctor();
+
+        mainPage.pressMakeAppointmentButton();
+        beginAppointmentToDoctor.isOpen();
+        beginAppointmentToDoctor.writeRequest();
+        beginAppointmentToDoctor.pressMakeRequestButton();
+        finishAppointmentToDoctor.writeRequest();
     }
 
-    @Test(description = "Услуги для иностранных граждан на английском языке")
+    @Test(description = "Услуги для иностранных граждан на английском языке", priority = 2)
     @TestCaseID("106")
     public void englishVersion() {
-        Assert.assertTrue(false);
+        MainPageObject mainPage = new MainPageObject();
+        mainPage.setLanguage("GBR");
+        mainPage.checkLocation("Saratov");
+    }
+
+    @AfterClass
+    public void testCleanUp() {
+        MainPageObject mainPage = new MainPageObject();
+        mainPage.setLanguage("RUS");
     }
 }
