@@ -56,7 +56,7 @@ public class SignInPageObject extends AbstractPageObject {
 
     public void open() {
         log.info("Открывается страница " + getPAGE_NAME());
-        webdriverHelper.open(getPAGE_URL());
+        webdriverHelper.openDirectLink(getPAGE_URL());
     }
 
     public void signingIn(String login, String password, String loginType) {

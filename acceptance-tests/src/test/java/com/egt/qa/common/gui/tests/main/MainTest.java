@@ -29,13 +29,15 @@ public class MainTest extends AbstractTest {
     @TestCaseID("106")
     public void englishVersion() {
         MainPageObject mainPage = new MainPageObject();
-        mainPage.setLanguage("GBR");
+        String languageTo = "en";
+        mainPage.open();
+        mainPage.setLanguage(languageTo);
         mainPage.checkLocation("Saratov");
     }
 
     @AfterClass
     public void testCleanUp() {
         MainPageObject mainPage = new MainPageObject();
-        mainPage.setLanguage("RUS");
+        mainPage.setLanguage("ru");
     }
 }

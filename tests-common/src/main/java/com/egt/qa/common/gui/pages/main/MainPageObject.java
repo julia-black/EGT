@@ -35,8 +35,8 @@ public class MainPageObject extends AbstractPageObject {
     private WebElement btnEnter;
     @FindBy(xpath = ".//span[contains(., 'Запись  на')]")
     private WebElement btnAppointmentToDoctor;
-    @FindBy(xpath = ".//*[contains(@class, 'civi-picker__title')]")
-    private WebElement btnSelectLanguage;
+    @FindBy(xpath = "//*[@id=\"langCiviPicker\"]/div[1]/div")
+    private WebElement btnOpenLanguageMenu;
     @FindBy(xpath = ".//*[contains(@class, 'lang-picker-lang-rus')]")
     private WebElement btnSelectLanguageRUS;
     @FindBy(xpath = ".//*[contains(@class, 'lang-picker-lang-gbr')]")
@@ -103,11 +103,13 @@ public class MainPageObject extends AbstractPageObject {
     }
 
     public void setLanguage(String language) {
-        click(btnSelectLanguage, "кнопка выбора языка");
+        webdriverHelper.openDirectLink("https://www.gosuslugi.ru/foreign-citizen?lang=" + language);
+        /*click(btnOpenLanguageMenu, "кнопка выбора языка");
         if (language.equals("GBR"))
         {
             click(btnSelectLanguageGBR, "кнопка 'Великобритания'");
-        }
+            click(btnSelectLanguageRUS, "кнопка 'Россия'");
+        }*/
     }
 
     public void checkLocation(String location) {
