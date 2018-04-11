@@ -1,6 +1,8 @@
 package com.egt.qa.common.gui.tests.support;
 
 import com.egt.qa.common.gui.annotations.TestCaseID;
+import com.egt.qa.common.gui.pages.support.SearchResultPageObject;
+import com.egt.qa.common.gui.pages.support.SupportPageObject;
 import com.egt.qa.common.gui.tests.AbstractTest;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -19,12 +21,27 @@ public class SupportTest extends AbstractTest {
     @Test(description = "Поиск ответа на вопрос с помощью кнопки «увеличительное стекло»", dataProvider = "forSearch")
     @TestCaseID("301")
     public void searchWithButton(String searchText) {
-        Assert.assertTrue(false);
+        SupportPageObject supportPage = new SupportPageObject();
+        SearchResultPageObject searchResultPage = new SearchResultPageObject();
+        supportPage.open();
+        supportPage.isOpen();
+        supportPage.writeQuestion(searchText);
+        supportPage.searchWithButton();
+        searchResultPage.isOpen();
     }
 
     @Test(description = "Поиск ответа на вопрос с помощью всплывающей подсказки", dataProvider = "forSearch")
     @TestCaseID("302")
-    public void searchWithHint(String searchText) {
+    public void searchWithHint(String searchText) throws InterruptedException {
+        SupportPageObject supportPage = new SupportPageObject();
+        SearchResultPageObject searchResultPage = new SearchResultPageObject();
+        supportPage.open();
+        supportPage.isOpen();
+        supportPage.writeQuestion(searchText);
+        supportPage.searchWithHint();
+        Thread.sleep(3000);
+        searchResultPage.isOpen();
+        searchResultPage.checkFirstResult(searchText);
         if (searchText.equals("Как получить скидку 30% на оплату госпошлины")) {
             Assert.assertEquals("Запись на прием в Госавтоинспекцию подтверждена, но оплата госпошлины через портал недоступна", searchText);
         }
