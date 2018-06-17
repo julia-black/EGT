@@ -28,7 +28,8 @@ public class BeginAppointmentToDoctor extends AbstractPageObject {
 
     @Override
     protected String getPAGE_URL() {
-        return "10066?from=main";
+        //return "10066?from=main";
+        return "10066/1?from=main";
     }
     @Override
     protected String getPAGE_NAME() {

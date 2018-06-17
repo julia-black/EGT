@@ -5,10 +5,8 @@ import com.egt.qa.common.gui.pages.main.MainPageObject;
 import com.egt.qa.common.gui.pages.services.BeginAppointmentToDoctor;
 import com.egt.qa.common.gui.pages.services.FinishAppointmentToDoctor;
 import com.egt.qa.common.gui.tests.AbstractTest;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class MainTest extends AbstractTest {
@@ -19,14 +17,16 @@ public class MainTest extends AbstractTest {
 
     @Test(description = "Запись пользователя ко врачу", priority = 1)
     @TestCaseID("105")
-    public void makeAppointmentToDoctor() {
+    public void makeAppointmentToDoctor() throws InterruptedException {
         MainPageObject mainPage = new MainPageObject();
         BeginAppointmentToDoctor beginAppointmentToDoctor = new BeginAppointmentToDoctor();
         FinishAppointmentToDoctor finishAppointmentToDoctor = new FinishAppointmentToDoctor();
 
         mainPage.open();
         mainPage.isOpen();
+        Thread.sleep(5000);
         mainPage.pressMakeAppointmentButton();
+        Thread.sleep(5000);
         beginAppointmentToDoctor.isOpen();
         beginAppointmentToDoctor.writeRequest();
         beginAppointmentToDoctor.pressMakeRequestButton();

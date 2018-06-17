@@ -1,20 +1,45 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="EGT">
-
     <test name="MainPage">
+        <parameter name="browser" value="Chrome"/>
         <classes>
             <class name="com.egt.qa.common.gui.tests.main.SigningInTest"/>
             <class name="com.egt.qa.common.gui.tests.main.MainTest"/>
         </classes>
     </test>
     <test name="SupportPage">
+        <parameter name="browser" value="Chrome"/>
         <classes>
             <class name="com.egt.qa.common.gui.tests.support.SupportTest"/>
         </classes>
     </test>
     <test name="ServicesPage">
+        <parameter name="browser" value="Chrome"/>
         <classes>
             <class name="com.egt.qa.common.gui.tests.services.ServicesTest"/>
         </classes>
     </test>
 </suite>
+
+        <!-- Uncomment for Parallel Execution
+        <suite name="EGTParallel" parallel="tests" thread-count="2" data-provider-thread-count="2" preserve-order="false">
+            <test name="ChromeTest">
+                <parameter name="browser" value="Chrome" />
+                <classes>
+                    <class name="com.egt.qa.common.gui.tests.support.SupportTest"/>
+                </classes>
+            </test>
+            <test name="FirefoxTest">
+                <parameter name="browser" value="Firefox" />
+                <classes>
+                    <class name="com.egt.qa.common.gui.tests.support.SupportTest"/>
+                </classes>
+            </test>
+            <test name="EdgeTest">
+                <parameter name="browser" value="Edge" />
+                <classes>
+                    <class name="com.egt.qa.common.gui.tests.support.SupportTest">
+                    </class>
+                </classes>
+            </test>
+        </suite>-->
