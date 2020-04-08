@@ -1,6 +1,7 @@
 package com.egt.qa.common.gui.webdriver;
 
 import io.github.bonigarcia.wdm.ChromeDriverManager;
+import io.github.bonigarcia.wdm.DriverManagerType;
 import io.github.bonigarcia.wdm.EdgeDriverManager;
 import io.github.bonigarcia.wdm.FirefoxDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -30,16 +31,16 @@ public class BaseSelenium {
     public static void setup(String browser) throws Exception {
         if (browser.equalsIgnoreCase("firefox")) {
             // Создать сущность Firefox
-            FirefoxDriverManager.getInstance().setup();
+            FirefoxDriverManager.getInstance(DriverManagerType.FIREFOX).setup();
             driver = new FirefoxDriver();
         } else if (browser.equalsIgnoreCase("chrome")) {
             // Создать сущность Chrome
-            ChromeDriverManager.getInstance().setup();
+            ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
             driver = new ChromeDriver();
             driver.manage().window().maximize();
         } else if (browser.equalsIgnoreCase("edge")) {
             // Создать сущность Edge
-            EdgeDriverManager.getInstance().setup();
+            EdgeDriverManager.getInstance(DriverManagerType.EDGE).setup();
             driver = new EdgeDriver();
         } else {
             // Если ни один браузер не одноружен
@@ -49,7 +50,7 @@ public class BaseSelenium {
     }
 
     public static void init() {
-        ChromeDriverManager.getInstance().setup();
+        ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }

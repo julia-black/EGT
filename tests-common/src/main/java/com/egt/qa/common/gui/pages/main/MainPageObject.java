@@ -13,7 +13,7 @@ public class MainPageObject extends AbstractPageObject {
 
     //<editor-folder desc="WebElements">
 
-    @FindBy(xpath = ".//*[@id='content']//h3[contains(@class,'popular-title')]")
+    @FindBy(xpath = ".//h3[contains(@class,'popular-title')]")
     private WebElement lblTitlePopular;
     @FindBy(xpath = ".//*[@class='button-base button-long button-base--enter']")
     private WebElement btnLogin;
@@ -62,7 +62,7 @@ public class MainPageObject extends AbstractPageObject {
      */
     public void isOpen() {
         log.info("Is page opened " + getPAGE_NAME());
-        isOpen("Популярное на портале", lblTitlePopular);
+        isOpen("Популярное на портале\nдля Саратовской области", lblTitlePopular);
         //isOpen("Войти", btnLogin);
     }
 

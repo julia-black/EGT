@@ -50,7 +50,7 @@ public class SignInPageObject extends AbstractPageObject {
      */
     public void isOpen() {
         log.info("Is page opened " + getPAGE_NAME());
-        isOpen("Популярное на портале", lblTitleEnter);
+        isOpen("Популярное на портале\nдля Саратовской области", lblTitleEnter);
         //isOpen("Войти", btnLogin);
     }
 

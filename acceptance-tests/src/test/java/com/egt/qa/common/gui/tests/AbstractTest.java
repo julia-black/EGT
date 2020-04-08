@@ -21,9 +21,8 @@ public class AbstractTest {
      */
     //@BeforeTest TODO For Parallel execution
     @BeforeSuite
-    @Parameters("browser")
-    public static void initSelenium(String browser) throws Exception {
-        BaseSelenium.setup(browser);
+    public static void initSelenium() throws Exception {
+        BaseSelenium.setup("chrome");
     }
 
     protected static void loggingIn() {
